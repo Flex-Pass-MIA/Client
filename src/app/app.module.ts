@@ -7,18 +7,21 @@ import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { SessionService } from './service/auth.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SearchComponent } from './search/search.component';
+import { SearchService } from './service/search.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
   { path: 'signup', component: SignUpComponent },
-  // { path: 'task/:id', component: TaskDetailsComponent }
+  { path: 'search', component: SearchComponent },
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [SessionService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
