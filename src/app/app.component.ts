@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SessionService } from './service/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
