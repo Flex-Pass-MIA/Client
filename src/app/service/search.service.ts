@@ -9,13 +9,15 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root'
 })
 export class SearchService {
+  results: any;
   constructor(private http: Http) { }
 
   searchResult(x) {
     console.log('x is : ', x);
     return this.http.post(`http://localhost:3000/search/gymsearch`, x)
     .map(res => {
-      console.log('res in search service:----->', res);
+      this.results = res;
+      console.log('res in search service:----->', JSON.parse(this.results._body));
       res.json();
     })
       .catch(this.handleError);
