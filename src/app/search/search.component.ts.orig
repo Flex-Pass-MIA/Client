@@ -26,9 +26,17 @@ export class SearchComponent implements OnInit {
     console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
     this.mySearch.searchResult(this.resultSearch)
       .subscribe(
-
+<<<<<<< HEAD
+        (searchResult) => {
+          this.searchTerm = searchResult;
+          console.log('result search where are you', this.searchTerm);
+          // console.log('8===========D-------------');
+=======
         (res) => {
           this.resultSearch.searchTerm = res;
+          // console.log('result search ========>>>>>', this.gymReturn);
+>>>>>>> 47242013d504bd48f377503ca15d83e15ee93042
+          // console.log('result test---->', this.search);
         },
         (err) => this.error = err
       );
