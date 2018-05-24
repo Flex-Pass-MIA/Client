@@ -12,35 +12,33 @@ import { SearchService } from '../service/search.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
   resultSearch: any = {};
-
   searchTerm: any;
+
   error: string;
+  gymReturn: any = this.mySearch.gymResults;
 
   constructor(public mySearch: SearchService) { }
 
-  gymSearch() {
 
+
+  gymSearch() {
+    console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
     this.mySearch.searchResult(this.resultSearch)
-    // .then( res => {
-    //       console.log('res in the component ---->', res);
-    // } )
-    // .catch( err => {
-    //   console.log('err in search component ts file: ', err);
-    // } );
       .subscribe(
         (res) => {
-          this.searchTerm = res;
-          console.log('result search', this.searchTerm);
-          // console.log('8===========D-------------');
+          this.resultSearch.searchTerm = res;
+          // console.log('result search ========>>>>>', this.gymReturn);
           // console.log('result test---->', this.search);
         },
         (err) => this.error = err
       );
 
+    }
+      getArray() {
+        console.log(`this gets array`, this.gymReturn);
+      }
 
-  }
 
 
 
