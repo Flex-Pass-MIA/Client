@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SearchService {
   results: any;
+  gymResults: Array<any> = [];
   constructor(private http: Http) { }
 
   searchResult(x) {
@@ -17,7 +18,12 @@ export class SearchService {
     return this.http.post(`http://localhost:3000/search/gymsearch`, x)
     .map(res => {
       this.results = res;
-      console.log('res in search service:----->', JSON.parse(this.results._body));
+      console.log(`get the results bruhuuhuhuhuhu`, this.results._body);
+      // console.log(`get the results MAMAMAMAMAMAMAMA`, this.results);
+      this.gymResults = JSON.parse(this.results._body);
+      // console.log('res in search service:----->', JSON.parse(this.results._body));
+      // this.gymResults.push(JSON.parse(this.results._body));
+      console.log(`This is GymResults========>>>>>>!!!!!!!`, this.gymResults);
       res.json();
     })
       .catch(this.handleError);
