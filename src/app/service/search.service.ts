@@ -17,8 +17,11 @@ export class SearchService {
     return this.http.post(`http://localhost:3000/search/gymsearch`, x)
     .map(res => {
       this.results = res;
+      console.log('this is res', res);
       console.log('res in search service:----->', JSON.parse(this.results._body));
-      res.json();
+      const searchResult = JSON.parse(this.results._body);
+      console.log('this is search result ---->', searchResult);
+      searchResult.json();
     })
       .catch(this.handleError);
   }

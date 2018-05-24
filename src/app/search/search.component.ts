@@ -30,9 +30,9 @@ export class SearchComponent implements OnInit {
     //   console.log('err in search component ts file: ', err);
     // } );
       .subscribe(
-        (res) => {
-          this.searchTerm = res;
-          console.log('result search', this.searchTerm);
+        (searchResult) => {
+          this.searchTerm = searchResult;
+          console.log('result search where are you', this.searchTerm);
           // console.log('8===========D-------------');
           // console.log('result test---->', this.search);
         },
