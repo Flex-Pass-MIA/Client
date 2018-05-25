@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../service/search.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { containsTree } from '@angular/router/src/url_tree';
 
 
 @Component({
@@ -14,11 +16,32 @@ import { SearchService } from '../service/search.service';
 export class SearchComponent implements OnInit {
   resultSearch: any = {};
   searchTerm: any;
+  today: Date = new Date();
 
   error: string;
   gymReturn: any = this.mySearch.gymResults;
+  // week: any = this.mySearch.gymResults[0].week[0].forEach(thing => thing.day);
+  // week = this.mySearch.gymResults[0].week[0];
+  thisIsWeek: any;
+  show: boolean;
 
-  constructor(public mySearch: SearchService) { }
+  constructor(public mySearch: SearchService) {
+    this.show = false;
+  }
+
+
+  isDate(arrDay) {
+
+
+    while (Date().includes(arrDay)) {
+
+      console.log('this is the current Date', Date());
+      return this.show = true;
+
+    }
+
+
+  }
 
 
 
@@ -34,8 +57,21 @@ export class SearchComponent implements OnInit {
       );
 
     }
+
       getArray() {
-        console.log(`this gets array`, this.gymReturn);
+        // tslint:disable-next-line:max-line-length
+        // console.log(`this gets array`, this.mySearch.gymResults[0].week[0].forEach(thing => { console.log('this is the thing--->', thing.day); }));
+
+        const week = this.mySearch.gymResults[0].week[0];
+        week.forEach(element => {
+          if (Date().includes(element.day)) {
+            console.log('its todays day');
+            console.log('todays day stuff', element.hours);
+
+            return this.thisIsWeek = element.hours;
+          }
+        });
+
       }
 
 
