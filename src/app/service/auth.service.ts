@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
@@ -36,9 +37,9 @@ export class SessionService {
 
   logout() {
     return this.http.post(`http://localhost:3000/api/logout`, {})
-      .map(res => { 
+      .map(res => {
         this.currentUser = null;
-        res.json(); 
+        res.json();
       })
       .catch(this.handleError);
   }

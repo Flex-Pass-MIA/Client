@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../service/search.service';
+import { GymService } from '../../service/gym.service';
 
 
 @Component({
@@ -18,9 +19,25 @@ export class SearchComponent implements OnInit {
   error: string;
   gymReturn: any = this.mySearch.gymResults;
 
-  constructor(public mySearch: SearchService) { }
+  constructor(public mySearch: SearchService,
+    private myGymService: GymService,
+    private myAuthService: SessionService) { }
 
   theDay: any;
+  gymSelected: any;
+  user: any;
+
+  addGym(gymID, user) {
+    console.log(gymID);
+    this.myGymService.newGym(gymID, user)
+    .subscribe(
+      (gymAdded) => {
+      console.log(gymAdded);
+    },
+    (err) => { this.error = err;
+      console.log('Unsucessfully Added Gym');
+    });
+  }
 
   gymSearch() {
     console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
@@ -36,7 +53,8 @@ export class SearchComponent implements OnInit {
 
     }
       getArray() {
-      this.theDay = this.mySearch.gymResults[0].week[0].forEach(element => element.day );
+      // this.theDay = this.mySearch.gymResults[0].week[0].forEach(element => element.day );
+      console.log(`YOOOOO DUTYYYYY`, this.gymReturn);
 
       }
 
@@ -45,6 +63,9 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit() {
+    this.user = this.myAuthService.currentUser;
+    console.log("user in the search comp: ", this.user);
+
   }
 
 }

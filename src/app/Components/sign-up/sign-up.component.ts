@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../service/auth.service';
-import { Observable } from 'rxjs/Observable';
-// import { Observable } from 'rxjs/rx';
-import { ActivatedRoute } from '@angular/router';
+// import { Observable } from 'rxjsjj/Observable';
+import { Observable } from 'rxjs/rx';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
   user: any;
   error: string;
 
-  constructor( private myService: SessionService ) { }
+  constructor( private myService: SessionService, private router: Router ) { }
 
   signup() {
     console.log(`Signup Now`);
@@ -34,10 +34,11 @@ export class SignUpComponent implements OnInit {
       .subscribe(
         (user) => {this.user = user;
           console.log(this.user);
+          this.router.navigate(['/login']);
         },
-        (err) => this.error = err
-      );
-      console.log(`heyyyyy`);
+        (err) => { this.error = err;
+          console.log(`heyyyyy`);
+        });
 
   }
 

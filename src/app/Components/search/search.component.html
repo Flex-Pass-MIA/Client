@@ -9,7 +9,6 @@
 <button type="button" (click)="gymSearch()">search</button>
 <button type="button" (click)="getArray()">Result</button>
 <div *ngFor="let gym of mySearch.gymResults">
-
     <h2>{{ gym.name }}</h2> 
     <p><b>Location</b></p>
     <p>{{ gym.formatted_address }}</p> 
@@ -17,9 +16,9 @@
     <p>{{ gym.rating }}</p> 
     <div *ngFor="let week of gym.week[0]">
       <div> {{week.day}} </div>
-  
+      
     </div>
     
+    <button type="submit" (click)="addGym(gym.place_id, user)">ADD</button>
 
-  
   </div>
