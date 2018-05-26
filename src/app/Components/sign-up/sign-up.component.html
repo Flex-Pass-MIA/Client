@@ -32,6 +32,6 @@
   <input type="password" [(ngModel)]="formInfo.password" name="password"/>
   <br>
 
-  <button (click)="signup()"> signup </button>
+  <a [routerLink]= "['/login']"><button (click)="signup()"> Signup </button></a>
 </form>
 <p class="error"> {{ error }} </p>

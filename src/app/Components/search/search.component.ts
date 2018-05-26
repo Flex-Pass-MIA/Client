@@ -1,9 +1,9 @@
 import { Component, OnInit, SystemJsNgModuleLoaderConfig } from '@angular/core';
-import { SessionService } from '../service/auth.service';
+import { SessionService } from '../../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../service/search.service';
+import { SearchService } from '../../service/search.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
 
   constructor(public mySearch: SearchService) { }
 
-
+  theDay: any;
 
   gymSearch() {
     console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
@@ -36,8 +36,10 @@ export class SearchComponent implements OnInit {
 
     }
       getArray() {
-        console.log(`this gets array`, this.gymReturn);
+      this.theDay = this.mySearch.gymResults[0].week[0].forEach(element => element.day );
+
       }
+
 
 
 

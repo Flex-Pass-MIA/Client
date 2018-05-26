@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -9,6 +10,9 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root'
 })
 export class SessionService {
+  temporaryUser: any;
+  currentUser: any;
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -16,7 +20,7 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(`http://localhost:3000/api/signup`, user)
+    return this.http.post(`http://localhost:3000/api/signup`, user, { withCredentials: true})
       .map(res => {
         console.log('res is: ', res);
         res.json();
@@ -25,26 +29,36 @@ export class SessionService {
   }
 
   login(user) {
-    return this.http.post(`http://localhost:3000/api/login`, user)
+    return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
     return this.http.post(`http://localhost:3000/api/logout`, {})
-      .map(res => res.json())
+      .map(res => { 
+        this.currentUser = null;
+        res.json(); 
+      })
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/loggedin`)
-      .map(res => res.json())
-      .catch(this.handleError);
+    return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
+    .toPromise()
+      .then(res => {
+        // this.currentUser = res;
+        this.temporaryUser = res;
+        // console.log('temporaryUser is: ', this.temporaryUser);
+        this.currentUser = JSON.parse(this.temporaryUser._body);
+        console.log('user in the service is:', this.currentUser );
+        res.json();
+        })
+      .catch( err => {
+        this.currentUser = null;
+        console.log('Error on isLoggedIn function:', err);
+      });
   }
 
-  getPrivateData() {
-    return this.http.get(`http://localhost:3000/api/private`)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
+
 }

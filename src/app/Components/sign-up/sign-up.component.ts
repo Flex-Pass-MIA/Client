@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../service/auth.service';
+import { SessionService } from '../../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
 import { ActivatedRoute } from '@angular/router';
