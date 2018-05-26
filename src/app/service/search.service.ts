@@ -18,6 +18,7 @@ export class SearchService {
     return this.http.post(`http://localhost:3000/search/gymsearch`, x)
     .map(res => {
       this.results = res;
+
       console.log(`get the results bruhuuhuhuhuhu`, this.results._body);
       // console.log(`get the results MAMAMAMAMAMAMAMA`, this.results);
       this.gymResults = JSON.parse(this.results._body);
@@ -25,6 +26,7 @@ export class SearchService {
       // this.gymResults.push(JSON.parse(this.results._body));
       console.log(`This is GymResults========>>>>>>!!!!!!!`, this.gymResults);
       res.json();
+
     })
       .catch(this.handleError);
   }
