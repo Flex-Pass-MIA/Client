@@ -1,12 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SessionService } from './service/auth.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+  user: any;
+  constructor(private myService: SessionService, private router: Router) {}
+
+  ngOnInit() {
+    this.myService.isLoggedIn()
+    .then( () => {
+      this.user = this.myService.currentUser;
+      if (this.user === null) {
+        this.router.navigate(['/login']);
+      }
+      // console.log('user in landing: ', this.user);
+    } )
+    .catch( err =>  {
+      console.log('err in landing ======= : ', err);
+      this.router.navigate(['/login']);
+    });
+  }
+
 }

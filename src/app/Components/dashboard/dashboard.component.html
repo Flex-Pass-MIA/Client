@@ -1,0 +1,18 @@
+<h1>
+  dashboard works!
+</h1>
+
+<div *ngIf="user">
+  <p>Welcome {{user.firstname}} {{user.lastname}},</p>
+  <p> Current Membership: {{user.membership}} </p>
+  <a [routerLink]="['/search']"><button type="submit">Search</button></a>
+  <a [routerLink]="['/']"><button type="submit" (click)="logout()">Log Out</button></a>
+</div>
+
+<div>
+<button (click)="getUsersGyms()">get My gyms</button>
+</div>
+
+<div>
+{{myGymService.myGym}}
+</div>
