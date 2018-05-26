@@ -1,11 +1,17 @@
 <h1>discover page</h1>
 
+
+<div> 
+    <app-googlemap [searchResults] = "mySearch.gymResults"></app-googlemap>
+  </div>
+
+
 <br><br>
 <label for="search">search</label>
 <br><br>
 <input type="search" [(ngModel)]="resultSearch.searchTerm" name="search" placeholder="search">
 <br><br>
-<button type="button" (click)="gymSearch()">search</button>
+<button type="button" (click)="gymSearch()  ">search</button>
 <button type="button" (click)="getArray()">Result</button>
 <div>today is: {{today}}</div>
 <div *ngFor="let gym of mySearch.gymResults">
@@ -37,23 +43,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
+  
 
     <!-- <div *ngFor="let week of gym.week[0]">
 

@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
 
     while (Date().includes(arrDay)) {
 
-      console.log('this is the current Date', Date());
+      // console.log('this is the current Date', Date());
       return this.show = true;
 
     }
@@ -58,26 +58,28 @@ export class SearchComponent implements OnInit {
 
     }
 
-      getArray() {
-        // tslint:disable-next-line:max-line-length
-        // console.log(`this gets array`, this.mySearch.gymResults[0].week[0].forEach(thing => { console.log('this is the thing--->', thing.day); }));
+      // getArray() {
+      //   // tslint:disable-next-line:max-line-length
+      // tslint:disable-next-line:max-line-length
+      //   // console.log(`this gets array`, this.mySearch.gymResults[0].week[0].forEach(thing => { console.log('this is the thing--->', thing.day); }));
 
-        const week = this.mySearch.gymResults[0].week[0];
-        week.forEach(element => {
-          if (Date().includes(element.day)) {
-            console.log('its todays day');
-            console.log('todays day stuff', element.hours);
+      //   const week = this.mySearch.gymResults[0].week[0];
+      //   week.forEach(element => {
+      //     if (Date().includes(element.day)) {
+      //       console.log('its todays day');
+      //       console.log('todays day stuff', element.hours);
 
-            return this.thisIsWeek = element.hours;
-          }
-        });
+      //       return this.thisIsWeek = element.hours;
+      //     }
+      //   });
 
-      }
+      // }
 
 
 
 
   ngOnInit() {
+    // console.log("what is gym return:  ", this.gymReturn);
   }
 
 }
