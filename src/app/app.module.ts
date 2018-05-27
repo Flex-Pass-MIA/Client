@@ -10,7 +10,7 @@ import { SessionService } from './service/auth.service';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { SearchComponent } from './Components/search/search.component';
 import { SearchService } from './service/search.service';
-import { GooglemapComponent } from './googlemap/googlemap.component';
+import { GooglemapComponent } from './Components/googlemap/googlemap.component';
 import { LoginComponent } from './Components/login/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { HomeComponent } from './Components/home/home.component';
