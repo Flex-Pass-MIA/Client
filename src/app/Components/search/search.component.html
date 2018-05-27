@@ -17,34 +17,36 @@
 <button type="button" (click)="getArray()">Result</button>
 <div>today is: {{today}}</div>
 <div *ngFor="let gym of mySearch.gymResults">
-    <h2>{{ gym.name }}</h2> 
+  <h2>{{ gym.name }}</h2> 
+  <img [src]="gym.pic"  height="200px"/>
     <p><b>Location</b></p>
     <p>{{ gym.formatted_address }}</p> 
     <p><b>Rating</b></p>
     <p>{{ gym.rating }}</p> 
     <div *ngFor="let popTimes of gym.busyTimes[0]">
       <div *ngIf="isDate(popTimes.day)">
-      <h3>{{popTimes.day}}</h3>
-      <div *ngFor="let time of popTimes.busyInfo[0]">
-        <ul>
-          <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li>
-        </ul>
-
-
-
-
-
+        <h3>{{popTimes.day}}</h3>
+        <div *ngFor="let time of popTimes.busyInfo[0]">
+          <ul>
+            <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li>
+          </ul>
+          
+          
+          
+          
+          
+        </div>
+        
       </div>
       
+      
+      
     </div>
-
-
-
-    </div>
-
-
-
-    </div>
+    
+    
+    
+    <button type="submit" (click)="addGym(gym.place_id, user)">ADD</button>
+  </div>
 
   
 
@@ -62,15 +64,13 @@
           </li>
 
 
-      </ul>
+      </ul> -->
 
 
-  
-    </div>
+
   
     
-    <button type="submit" (click)="addGym(gym.place_id, user)">ADD</button>
 
   
-  </div> -->
+
 
