@@ -15,12 +15,17 @@ export class DashboardComponent implements OnInit {
   user: any;
   error: any;
   myFlex: any;
+  gymList: any;
+  gymListError: any;
+  show: boolean;
 
   constructor(
     private myService: SessionService,
     private myRouter: Router,
     private myGymService: GymService
-  ) { }
+  ) {
+    this.show = false;
+   }
 
   ngOnInit() {
     // console.log(`These are the gyms`, this.myGymService);
@@ -28,15 +33,60 @@ export class DashboardComponent implements OnInit {
     if (this.user === undefined || this.user === null ) {
       this.myRouter.navigate(['/login']);
     }
+
+  //   this.myService
+  //     .isLoggedIn()
+  //   // If success, we are logged in.
+  //     .then(resultFromApi => {
+  //       this.user = resultFromApi;
+  //       console.log('user is: search from api results ', resultFromApi);
+  //     })
+
+  //  // Even if you don't do anything on error, catch to avoid a console error.
+  //     .catch (err => {
+  //       console.log(err);
+  //       this.myRouter.navigate(['/login']);
+  //     });
+
+
+    this.getUsersGyms();
+
     // console.log('HELLOOOOOOOOOOOOOOOO', this.user );
-    this.myGymService.getGym();
-    // console.log('HELLOOOOOOOOOOOOOOOO', this.myGymService );
+    // this.myGymService.getGym(this.user);
+    // console.log('HELLOOOOOOOOOOOOOOO', this.myGymService );
+  }
+
+  isDate(arrDay) {
+
+
+    while (Date().includes(arrDay)) {
+
+      // console.log('this is the current Date', Date());
+      return this.show = true;
+
+    }
+
+
   }
 
 
   getUsersGyms() {
-    console.log(`Just clicked this!`)
-    console.log(this.myGymService);
+    // console.log(`who is the user?:::::::>`);
+    // console.log(`does this happen---->`, this.myGymService.getAllGyms());
+    this.myGymService.getAllGyms(this.user)
+    .subscribe(usersGyms => {
+      console.log('are these the usersGyms????: ', usersGyms);
+        this.gymList = usersGyms;
+
+      },
+      () => {
+        this.gymListError = 'Sorry, no gyms listed.';
+      }
+    );
+  }
+
+  getSingleGym() {
+    // this.myGymService.
   }
 
 
