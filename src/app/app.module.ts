@@ -14,6 +14,14 @@ import { GooglemapComponent } from '../app/Components/googlemap/googlemap.compon
 import { LoginComponent } from './Components/login/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { HomeComponent } from './Components/home/home.component';
+import { MainNavComponent } from './Components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -21,8 +29,9 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'mapTest', component: GooglemapComponent},
   { path: 'login', component: LoginComponent },
-  { path: `dashboard`, component: DashboardComponent },
-  { path: ``, component: HomeComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: HomeComponent },
+  { path: 'main', component: MainNavComponent },
 ];
 
 
@@ -34,7 +43,8 @@ const routes: Routes = [
     GooglemapComponent,
     LoginComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +54,19 @@ const routes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBHsQ5mbZ20-fri8maikgz2H_6Wmt64LZ0',
     }),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
   ],
-  providers: [SessionService, SearchService],
+  providers: [
+    SessionService,
+    SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { SessionService } from '../../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { AgmCoreModule } from '@agm/core';
-
-import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../service/search.service';
+import { ActivatedRoute } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
 import { containsTree } from '@angular/router/src/url_tree';
 import { SearchComponent } from '../search/search.component';
