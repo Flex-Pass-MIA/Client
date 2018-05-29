@@ -23,11 +23,25 @@ export class GymService {
   }
 
   newGym(gymID, user) {
+    console.log(`WHAT THE HELL MAN`, user._id);
     const gymId = { gymId: gymID, userId: user._id };
     console.log(`THIS PART WORKS`, gymID);
     return this.http.post(`http://localhost:3000/select-gyms`, gymId)
     .map(res => {
         console.log('res is WHATTTT IS ITT!!!!!!: ', this.myGym);
+        res.json();
+      })
+      .catch(this.handleError);
+  }
+
+  removeGym(gymID, userId) {
+    console.log(`THIS PART WORKS`, userId);
+    console.log(`THIS PART WORKS & this too`, gymID);
+    // console.log(`DID THIS EVEN HAPPEN`, user._id);
+    const data = { gymId: gymID, userId: userId};
+    return this.http.post(`http://localhost:3000/delete-gym`, data)
+    .map(res => {
+        console.log('REMOVE GYM: ', res);
         res.json();
       })
       .catch(this.handleError);
