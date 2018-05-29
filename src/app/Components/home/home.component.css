@@ -1,0 +1,15 @@
+.cover {
+  width: 100%;
+  height: 100vh;
+}
+.green {
+  background-color: aqua;
+}
+
+.bg-1 {
+  background: linear-gradient(35deg, #97fca6 15%, #8db6fe 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: saturate(2); 
+  filter: contrast(2);
+}

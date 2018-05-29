@@ -12,8 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
 
   formInfo = {
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     dob: '',
     address: '',
     email: '',
