@@ -28,32 +28,17 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit() {
-    // console.log(`These are the gyms`, this.myGymService);
-    this.user = this.myService.currentUser;
-    if (this.user === undefined || this.user === null ) {
-      this.myRouter.navigate(['/login']);
-    }
 
-  //   this.myService
-  //     .isLoggedIn()
-  //   // If success, we are logged in.
-  //     .then(resultFromApi => {
-  //       this.user = resultFromApi;
-  //       console.log('user is: search from api results ', resultFromApi);
-  //     })
-
-  //  // Even if you don't do anything on error, catch to avoid a console error.
-  //     .catch (err => {
-  //       console.log(err);
-  //       this.myRouter.navigate(['/login']);
-  //     });
+    this.myService.currentUser.subscribe((res) => {
+      this.user = res;
+      if (this.user === undefined || this.user === null ) {
+        this.myRouter.navigate(['/login']);
+      }
+    });
 
 
     this.getUsersGyms();
 
-    // console.log('HELLOOOOOOOOOOOOOOOO', this.user );
-    // this.myGymService.getGym(this.user);
-    // console.log('HELLOOOOOOOOOOOOOOO', this.myGymService );
   }
 
   isDate(arrDay) {
