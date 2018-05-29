@@ -2,7 +2,7 @@ import { Component, OnInit, SystemJsNgModuleLoaderConfig } from '@angular/core';
 import { SessionService } from '../../service/auth.service';
 import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { SearchService } from '../service/search.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { containsTree } from '@angular/router/src/url_tree';
@@ -32,7 +32,9 @@ export class SearchComponent implements OnInit {
 
   constructor(public mySearch: SearchService,
     private myGymService: GymService,
-    private myAuthService: SessionService) {
+    private myAuthService: SessionService,
+    private myRouter: Router
+  ) {
     this.show = false;
   }
 
@@ -106,8 +108,12 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     // console.log("what is gym return:  ", this.gymReturn);
-    this.user = this.myAuthService.currentUser;
-    console.log('user in the search comp: ', this.user);
+    this.myAuthService.currentUser.subscribe((res) => {
+      this.user = res;
+      if (this.user === undefined || this.user === null ) {
+        this.myRouter.navigate(['/login']);
+      }
+    });
 
   }
 

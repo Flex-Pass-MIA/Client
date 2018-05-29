@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SessionService {
   temporaryUser: any;
-  currentUser: any;
+  currentUser: BehaviorSubject<string> = new BehaviorSubject(null);
 
   constructor(private http: Http) { }
 
@@ -31,14 +32,18 @@ export class SessionService {
 
   login(user) {
     return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true})
-      .map(res => res.json())
+      .map(res => {
+        console.log(`Asian LOVEEEEEEE`, JSON.parse(res._body));
+        this.currentUser.next(JSON.parse(res._body));
+        // res.json();
+      })
       .catch(this.handleError);
   }
 
   logout() {
     return this.http.post(`http://localhost:3000/api/logout`, {})
       .map(res => {
-        this.currentUser = null;
+        this.currentUser.next(null);
         res.json();
       })
       .catch(this.handleError);
@@ -48,12 +53,8 @@ export class SessionService {
     return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
     .toPromise()
       .then(res => {
-        // this.currentUser = res;
-        this.temporaryUser = res;
-        // console.log('temporaryUser is: ', this.temporaryUser);
-        this.currentUser = JSON.parse(this.temporaryUser._body);
-        console.log('user in the service is:', this.currentUser );
-        res.json();
+        this.currentUser.next(JSON.parse(res._body));
+        // res.json();
         })
       .catch( err => {
         this.currentUser = null;
