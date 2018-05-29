@@ -33,8 +33,9 @@ export class SessionService {
   login(user) {
     return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true})
       .map(res => {
-        console.log(`Asian LOVEEEEEEE`, JSON.parse(res._body));
-        this.currentUser.next(JSON.parse(res._body));
+        this.temporaryUser = res;
+        console.log(`Asian LOVEEEEEEE`, JSON.parse(this.temporaryUser._body));
+        this.currentUser.next(JSON.parse(this.temporaryUser._body));
         // res.json();
       })
       .catch(this.handleError);
@@ -53,7 +54,8 @@ export class SessionService {
     return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
     .toPromise()
       .then(res => {
-        this.currentUser.next(JSON.parse(res._body));
+        this.temporaryUser = res;
+        this.currentUser.next(JSON.parse(this.temporaryUser._body));
         // res.json();
         })
       .catch( err => {
