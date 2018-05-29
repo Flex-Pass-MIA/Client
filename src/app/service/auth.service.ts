@@ -33,7 +33,12 @@ export class SessionService {
   login(user) {
     return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true})
       .map(res => {
+
         this.temporaryUser = res;
+
+        // console.log(`something in front --->`, res);
+
+
         console.log(`Asian LOVEEEEEEE`, JSON.parse(this.temporaryUser._body));
         this.currentUser.next(JSON.parse(this.temporaryUser._body));
         // res.json();
@@ -55,6 +60,7 @@ export class SessionService {
     .toPromise()
       .then(res => {
         this.temporaryUser = res;
+
         this.currentUser.next(JSON.parse(this.temporaryUser._body));
         // res.json();
         })

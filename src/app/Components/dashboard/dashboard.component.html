@@ -17,8 +17,14 @@
 {{myGymService.myGym}}
 </div>
 
-<div *ngFor="let gym of gymList">
 
+
+
+
+
+
+<div *ngFor="let gym of gymList">
+  {{gym.place_id}}
   <h1>{{gym.name}}</h1>
   <img [src]="gym.pic"  height="200px"/>
     <p><b>Location</b></p>
