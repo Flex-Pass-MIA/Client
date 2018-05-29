@@ -14,18 +14,27 @@ export class AppComponent implements OnInit {
   constructor(private myService: SessionService, private router: Router) {}
 
   ngOnInit() {
-    this.myService.isLoggedIn()
-    .then( () => {
-      this.user = this.myService.currentUser;
-      if (this.user === null) {
+
+
+    this.myService.currentUser.subscribe((res) => {
+      this.user = res;
+      if (this.user === undefined || this.user === null ) {
         this.router.navigate(['/login']);
       }
-      // console.log('user in landing: ', this.user);
-    } )
-    .catch( err =>  {
-      console.log('err in landing ======= : ', err);
-      this.router.navigate(['/login']);
     });
+  //   this.myService.isLoggedIn()
+  //   .then( () => {
+  //     this.user = this.myService.currentUser;
+  //     if (this.user === null) {
+  //       this.router.navigate(['/login']);
+  //     }
+  //     // console.log('user in landing: ', this.user);
+  //   } )
+  //   .catch( err =>  {
+  //     console.log('err in landing ======= : ', err);
+  //     this.router.navigate(['/login']);
+  //   });
   }
 
 }
+
