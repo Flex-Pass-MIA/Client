@@ -96,11 +96,11 @@ export class SearchComponent implements OnInit {
       //   });
 
       // }
-      getArray() {
-      // this.theDay = this.mySearch.gymResults[0].week[0].forEach(element => element.day );
-      console.log(`YOOOOO DUTYYYYY`, this.gymReturn);
+      // getArray() {
+      // // this.theDay = this.mySearch.gymResults[0].week[0].forEach(element => element.day );
+      // console.log(`YOOOOO DUTYYYYY`, this.gymReturn);
 
-      }
+      // }
 
 
 
@@ -114,6 +114,8 @@ export class SearchComponent implements OnInit {
         this.myRouter.navigate(['/login']);
       }
     });
+
+    // this.myAuthService.isLoggedIn();
 
   }
 
