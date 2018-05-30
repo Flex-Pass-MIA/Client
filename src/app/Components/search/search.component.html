@@ -1,54 +1,54 @@
 <app-main-nav>
-  <h1>discover page</h1>
+  </app-main-nav> 
+
+  <div class="search">
+    <mat-form-field>
+        <mat-icon matSuffix>location_on</mat-icon>
+        <input matInput mat-icon placeholder="Find Your Gym" type="search" [(ngModel)]="resultSearch.searchTerm" name="search">
+      </mat-form-field>
+    <button class="search-btn" mat-button type="button" (click)="gymSearch()"><mat-icon matSuffix>search</mat-icon></button>
+  </div>
+  <div class="spacer"></div>
+
+<div class="dvsn">
   
-  
-  <div> 
-      <app-googlemap [searchResults] = "mySearch.gymResults"></app-googlemap>
-    </div>
-  
-  
-  <a [routerLink]="['/']"><button type="submit">Home</button></a>
-  <a [routerLink]= "['/dashboard']"><button type="submit">Dashboard</button></a>
-  <br><br>
-  <label for="search">search</label>
-  <br><br>
-  <input type="search" [(ngModel)]="resultSearch.searchTerm" name="search" placeholder="search">
-  <br><br>
-  <button type="button" (click)="gymSearch()  ">search</button>
-  <button type="button" (click)="getArray()">Result</button>
-  <div>today is: {{today}}</div>
-  <div *ngFor="let gym of mySearch.gymResults">
-    <h2>{{ gym.name }}</h2> 
-    <img [src]="gym.pic"  height="200px"/>
-      <p><b>Location</b></p>
-      <p>{{ gym.formatted_address }}</p> 
-      <p><b>Rating</b></p>
-      <p>{{ gym.rating }}</p> 
-      <div *ngFor="let popTimes of gym.busyTimes[0]">
-        <div *ngIf="isDate(popTimes.day)">
-          <h3>{{popTimes.day}}</h3>
-          <div *ngFor="let time of popTimes.busyInfo[0]">
-            <ul>
-              <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li>
-            </ul>
+  <div class="info-contain">
+      <!-- START OF GYM INFO -->
+      <div class="gym-contain">
+        <div class="single-gym" *ngFor="let gym of mySearch.gymResults">
+          <img [src]="gym.pic"  height="150px" width="250px"/>
+          <h4><b>{{ gym.name }}</b></h4> 
+              <p>{{ gym.formatted_address }}</p> 
+                <p><b>Rating</b></p>
+                  <p>{{ gym.rating }}</p> 
             
-            
-            
-            
-            
+            <div *ngFor="let popTimes of gym.busyTimes[0]">
+              <div *ngIf="isDate(popTimes.day)">
+                <!-- <h3>{{popTimes.day}}</h3>  THIS IS THE CURRENT DAY --> 
+                <h4>Current Times</h4>
+                <div *ngFor="let time of popTimes.busyInfo[0]">
+                  <ul>
+                    <!-- <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li> -->
+                  </ul>  
+                </div>  
+              </div>
+            </div>
+            <!-- Add Gym Button -->
+            <!-- <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button> -->
           </div>
-          
-        </div>
-        
-        
-        
       </div>
-      
-      
-      
-      <button type="submit" (click)="addGym(gym.place_id, user)">ADD</button>
+        <!-- END OF GYM INFO -->
     </div>
   
+  
+  <!-- THIS IS THE MAP -->
+        <div class="map"> 
+          <app-googlemap [searchResults] = "mySearch.gymResults"></app-googlemap>
+        </div>
+        <!-- END OF THE MAP -->
+</div>
+
+    
     
   
       <!-- <div *ngFor="let week of gym.week[0]">
@@ -71,8 +71,3 @@
   
     
       
-  
-    
-  
-
-</app-main-nav> 
