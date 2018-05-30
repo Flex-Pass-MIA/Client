@@ -35,9 +35,10 @@ markerDraggable: string;
   noResults: any;
   error: any;
 
-  constructor(public mySearch: SearchService, public searchComp: SearchComponent) { }
+  constructor(public mySearch: SearchService, public searchComp: SearchComponent, private myService: SessionService) { }
 
   ngOnInit() {
+    // this.myService.isLoggedIn();
   }
 
 

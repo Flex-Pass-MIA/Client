@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'mapTest', component: GooglemapComponent},
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '', component: HomeComponent },
+  { path: 'index', component: HomeComponent },
   { path: 'main', component: MainNavComponent },
 ];
 

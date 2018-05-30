@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SessionService {
   temporaryUser: any;
-  currentUser: BehaviorSubject<string> = new BehaviorSubject(null);
+  currentUser: BehaviorSubject<string>;
 
   constructor(private http: Http) { }
 
@@ -40,7 +40,7 @@ export class SessionService {
 
 
         console.log(`Asian LOVEEEEEEE`, JSON.parse(this.temporaryUser._body));
-        this.currentUser.next(JSON.parse(this.temporaryUser._body));
+        this.currentUser = new BehaviorSubject(JSON.parse(this.temporaryUser._body));
         // res.json();
       })
       .catch(this.handleError);
@@ -49,7 +49,7 @@ export class SessionService {
   logout() {
     return this.http.post(`http://localhost:3000/api/logout`, {})
       .map(res => {
-        this.currentUser.next(null);
+        this.currentUser = new BehaviorSubject(null);
         res.json();
       })
       .catch(this.handleError);
@@ -61,11 +61,11 @@ export class SessionService {
       .then(res => {
         this.temporaryUser = res;
 
-        this.currentUser.next(JSON.parse(this.temporaryUser._body));
+        this.currentUser = new BehaviorSubject(JSON.parse(this.temporaryUser._body));
         // res.json();
         })
       .catch( err => {
-        this.currentUser = null;
+        this.currentUser = new BehaviorSubject(null);
         console.log('Error on isLoggedIn function:', err);
       });
   }

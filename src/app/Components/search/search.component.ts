@@ -98,9 +98,6 @@ export class SearchComponent implements OnInit {
       // }
 
 
-
-
-
   ngOnInit() {
     // console.log("what is gym return:  ", this.gymReturn);
     this.myAuthService.currentUser.subscribe((res) => {
@@ -109,6 +106,8 @@ export class SearchComponent implements OnInit {
         this.myRouter.navigate(['/login']);
       }
     });
+
+    // this.myAuthService.isLoggedIn();
 
   }
 

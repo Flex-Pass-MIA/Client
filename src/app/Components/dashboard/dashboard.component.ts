@@ -29,15 +29,18 @@ export class DashboardComponent implements OnInit {
 
 // ***********************************************************
   ngOnInit() {
-    this.myService.currentUser.subscribe((res) => {
-      this.user = res;
-      console.log(`DASHBOARD USER`, this.user);
-      if (this.user === undefined || this.user === null ) {
-        this.myRouter.navigate(['/login']);
-      }
+    this.myService.isLoggedIn()
+    .then(() => {
+      this.myService.currentUser.subscribe((res) => {
+        this.user = res;
+        console.log(`DASHBOARD USER`, this.user);
+        if (this.user === undefined || this.user === null ) {
+          this.myRouter.navigate(['/login']);
+        }
+      });
+      this.getUsersGyms();
     });
-    this.getUsersGyms();
-  }
+    }
 // ***********************************************************
 isDate(arrDay) {
   while (Date().includes(arrDay)) {
@@ -60,11 +63,17 @@ getUsersGyms() {
 // ***********************************************************
 deleteGym(gymID, userId) {
   console.log(`User to delete`, userId);
-  console.log("gym id",gymID);
+  console.log('gym id' , gymID);
   this.myGymService.removeGym(gymID, userId)
   .subscribe(
     (gymDeleted) => {
     console.log(gymDeleted);
+
+    const found = this.gymList.find((gym) => {
+      return gym.place_id === gymID;
+    });
+    const index = this.gymList.indexOf(found);
+    this.gymList.splice(index, 1);
   },
   (err) => { this.error = err;
     console.log('GYM WAS NOT DELETED');
