@@ -1,0 +1,67 @@
+.spacer {
+  margin-top: 70px;
+  height: 70px;
+  width: 100%;
+}
+
+.map {
+  width: 50vw;
+  position: absolute;
+  margin-left: 50vw;
+}
+
+.search {
+  margin-top: 70px;
+    display: flex;
+    justify-items: end;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #888888;
+    padding-left: 10px;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+}
+
+input {
+  width:300px;
+}
+
+.search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #888888;
+  margin-left: 20px;
+  width: 200px;
+  
+}
+
+.dvsn {
+  display: flex;
+  justify-content: space-between;
+  height: 80vh;
+  position: fixed;
+}
+
+.info-contain {
+  width: 50vw;
+  overflow-y: scroll;
+  overflow-x: hidden; 
+  height: 80vh;
+
+}
+
+.single-gym {
+  padding: 10px;
+  width: 50vw;
+  line-height: 1px;
+  border-bottom: 1px solid #888888;
+}
+
+.gym-contain {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}

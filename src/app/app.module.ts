@@ -20,6 +20,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { MembershipComponent } from './membership/membership.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     HomeComponent,
-    MainNavComponent
+    MainNavComponent,
+    MembershipComponent
   ],
   imports: [
     BrowserModule,

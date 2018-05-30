@@ -1,0 +1,20 @@
+<div *ngFor="let gym of gymList">
+    {{gym.place_id}}
+    <h1>{{gym.name}}</h1>
+    <img [src]="gym.pic"  height="200px"/>
+      <p><b>Location</b></p>
+      <p>{{ gym.formatted_address }}</p> 
+      <p><b>Rating</b></p>
+      <p>{{ gym.rating }}</p> 
+      <div *ngFor="let popTimes of gym.busyTimes[0]">
+        <div *ngIf="isDate(popTimes.day)">
+          <h3>{{popTimes.day}}</h3>
+           <div *ngFor="let time of popTimes.busyInfo[0]">
+            <ul>
+              <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li>
+            </ul>
+            <br>
+            </div>
+          </div>
+        </div>
+        <button (click)="deleteGym(gym.place_id, user._id)">Delete</button>
