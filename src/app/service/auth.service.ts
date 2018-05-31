@@ -39,7 +39,7 @@ export class SessionService {
         // console.log(`something in front --->`, res);
 
 
-        console.log(`Asian LOVEEEEEEE`, JSON.parse(this.temporaryUser._body));
+        // console.log(`Asian LOVEEEEEEE`, JSON.parse(this.temporaryUser._body));
         this.currentUser.next(JSON.parse(this.temporaryUser._body));
         // res.json();
       })
@@ -47,6 +47,8 @@ export class SessionService {
   }
 
   logout() {
+  // this.currentUser = null;
+  sessionStorage.clear();
     return this.http.post(`http://localhost:3000/api/logout`, {})
       .map(res => {
         this.currentUser.next(null);

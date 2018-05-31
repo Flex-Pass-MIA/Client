@@ -25,25 +25,31 @@
               <p>{{ gym.formatted_address }}</p> 
                 <p><b>Rating</b></p>
                   <p>{{ gym.rating }}</p> 
-                  <p>{{gym.place_id}}</p>
+                  <!-- <p>{{gym.place_id}}</p> -->
             
             <div *ngFor="let popTimes of gym.busyTimes[0]">
               <div *ngIf="isDate(popTimes.day)">
-                <!-- <h3>{{popTimes.day}}</h3>  THIS IS THE CURRENT DAY --> 
-                <h4>Current Times</h4>
-                <div *ngFor="let time of popTimes.busyInfo[0]">
-                  <ul>
+                <!-- <h3>{{popTimes.day}}</h3>  THIS IS THE CURRENT DAY  -->
+                <!-- <h4>Current Times</h4> -->
+                <!-- <div *ngFor="let time of popTimes.busyInfo[0]"> -->
+
+                  <!-- <p>{{time.hour}}</p>
+                  <br>
+                  <p>{{time.percentage}}</p> -->
+                      <app-busygraph [graphSearchResultsHour] = "popTimes.busyInfo" ></app-busygraph>
+                      <!-- <app-busygraph [graphSearchResultsPerc] = "popTimes.busyInfo[0].percentage" ></app-busygraph> -->
+
                     <!-- <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li> -->
-                  </ul>  
-                </div>  
+                  
+                 
               </div>
             </div>
             <!-- Add Gym Button -->
-            <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button>
+            <!-- <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button> -->
 
           </div>
           <!-- Add Gym Button -->
-          <button mat-icon type="submit" (click)="addGym(gym.place_id, user._id)"><mat-icon>add_circle_outline</mat-icon> </button>
+          <!-- <button mat-icon type="submit" (click)="addGym(gym.place_id, user._id)"><mat-icon>add_circle_outline</mat-icon> </button> -->
         </div>
       </div>
       <!-- END OF GYM INFO -->
@@ -55,7 +61,7 @@
       <app-googlemap [searchResults] = "mySearch.gymResults"></app-googlemap>
     </div>
     <!-- END OF THE MAP -->
-  </div>
+  <!-- </div> -->
   
   
   
@@ -80,4 +86,4 @@
     
     
     
-      </app-main-nav> 
+      <!-- </app-main-nav>  -->
