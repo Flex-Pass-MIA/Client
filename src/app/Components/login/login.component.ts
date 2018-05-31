@@ -24,13 +24,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // this.myService.isLoggedIn();
 
-    // this.myService.currentUser.subscribe((res) => {
-    //   this.user = res;
-    //   console.log(`DASHBOARD USER`, this.user);
+    // // this.myService.currentUser.subscribe((res) => {
+    // //   this.user = res;
+    // //   console.log(`DASHBOARD USER`, this.user);
     //   if (this.user === undefined || this.user === null ) {
     //     this.myRouter.navigate(['/login']);
-    //   }
-    // });
+    // //   }
+    // // });
+      // }
+
 
   }
 

@@ -20,7 +20,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { MembershipComponent } from './membership/membership.component';
+import { MembershipComponent } from './Components/membership/membership.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -65,6 +66,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
+    ChartsModule,
   ],
   providers: [
     SessionService,
