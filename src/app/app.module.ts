@@ -24,6 +24,9 @@ import { MembershipComponent } from './Components/membership/membership.componen
 import { ChartsModule } from 'ng2-charts';
 
 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -67,6 +70,8 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     ChartsModule,
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [
     SessionService,

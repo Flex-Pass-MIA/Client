@@ -13,6 +13,7 @@
       <a mat-list-item [routerLink]="['/signup']"><button mat-icon-button><mat-icon>create</mat-icon> Signup</button></a>
       <a mat-list-item [routerLink]="['/login']"><button mat-icon-button><mat-icon>account_circle</mat-icon> Login</button></a>
       <a mat-list-item [routerLink]= "['/dashboard']"><button type="submit">Dashboard</button></a>
+      <a mat-list-item ><button mat-icon-button type="submit" (click)="logout()"><mat-icon>power_settings_new</mat-icon>Log Out</button></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -31,6 +32,7 @@
       <a [routerLink]="['/signup']">Signup</a>
       <a [routerLink]="['/login']">Login</a> 
       <a [routerLink]= "['/dashboard']">Dashboard</a>
+      <a (click)="logout()">Log Out</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
