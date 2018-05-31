@@ -28,15 +28,15 @@ export class GymService {
     console.log(`THIS PART WORKS`, gymID);
     return this.http.post(`http://localhost:3000/select-gyms`, gymId)
     .map(res => {
-        console.log('res is WHATTTT IS ITT!!!!!!: ', this.myGym);
+        // console.log('res is WHATTTT IS ITT!!!!!!: ', this.myGym);
         res.json();
       })
       .catch(this.handleError);
   }
 
   removeGym(gymID, userId) {
-    console.log(`THIS PART WORKS`, userId);
-    console.log(`THIS PART WORKS & this too`, gymID);
+    // console.log(`THIS PART WORKS`, userId);
+    // console.log(`THIS PART WORKS & this too`, gymID);
     // console.log(`DID THIS EVEN HAPPEN`, user._id);
     const data = { gymId: gymID, userId: userId};
     return this.http.post(`http://localhost:3000/delete-gym`, data)
@@ -63,7 +63,7 @@ export class GymService {
   // }
 
   getAllGyms(user) {
-    console.log(`does this show the user!!!?!?!?!?!?!?!?`, user);
+    // console.log(`does this show the user!!!?!?!?!?!?!?!?`, user);
     return this.http.post(`http://localhost:3000/flex`, user)
         .map(res =>
           res.json()

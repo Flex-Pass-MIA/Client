@@ -8,6 +8,9 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { containsTree } from '@angular/router/src/url_tree';
 import { SearchService } from '../../service/search.service';
 import { GymService } from '../../service/gym.service';
+import {Chart} from 'chart.js';
+import { Color } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 @Component({
@@ -59,8 +62,8 @@ export class SearchComponent implements OnInit {
 
 
   addGym(gymID, user) {
-    console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
-    console.log(`WHAT IS USER ID MANNNNNN`, user);
+    // console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
+    // console.log(`WHAT IS USER ID MANNNNNN`, user);
     this.myGymService.newGym(gymID, user)
     .subscribe(
       (gymAdded) => {
@@ -72,7 +75,7 @@ export class SearchComponent implements OnInit {
   }
 
   gymSearch() {
-    console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
+    // console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
     this.mySearch.searchResult(this.resultSearch)
       .subscribe(
 

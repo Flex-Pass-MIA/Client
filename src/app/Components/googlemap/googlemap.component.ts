@@ -51,7 +51,7 @@ markerDraggable: string;
 
             (res) => {
               this.resultsFromQuery = res;
-              console.log('results from query on map comp????????', this.resultsFromQuery);
+              // console.log('results from query on map comp????????', this.resultsFromQuery);
             },
             (err) => this.error = err
           );
@@ -80,10 +80,10 @@ markerDraggable: string;
                               lng: oneResult.lng,
                               draggable: false,
                           };
-                          console.log('this is the new Marker!!!!!!', newMarker);
+                          // console.log('this is the new Marker!!!!!!', newMarker);
                           that.marker.push((Object.assign({}, newMarker)));
                           });
-                          console.log('this is just the marker', this.marker);
+                          // console.log('this is just the marker', this.marker);
 
                         }
 
