@@ -26,11 +26,93 @@
 }
 
 .demo-tab-content {
-  padding: 100px;
+  padding: 10px;
 }
 
 .my-flex {
   display: flex;
   flex-direction: row;
   padding: 15px;
+}
+
+.spacer {
+  margin-top: 70px;
+  height: 70px;
+  width: 100%;
+}
+
+.map {
+  width: 30vw;
+  height: 100%;
+  
+}
+
+.container-gyms {
+  display: flex;
+  justify-content: flex-start;
+  height: 55vh;
+}
+
+.search-contain {
+  width: 30vw;
+  height: 100%
+}
+
+.search {
+  /* margin-top: 70px;
+    display: flex;
+    justify-items: end;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #888888;
+    padding-left: 10px;
+    position: fixed;
+    z-index: 1;
+    background-color: white; */
+}
+
+input {
+  width:300px;
+}
+
+.search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #888888;
+  margin-left: 20px;
+  width: 100px;
+  
+}
+
+.address-width {
+  width: 140px;
+}
+
+.dvsn {
+  display: flex;
+  justify-content: space-between;
+  height: 80vh;
+  position: fixed;
+}
+
+.info-contain {
+  width: 30vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 80%;
+}
+
+.single-gym {
+  padding: 10px;
+  width: 50vw;
+  line-height: 1px;
+  border-bottom: 1px solid #888888;
+}
+
+.gym-contain {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
 }

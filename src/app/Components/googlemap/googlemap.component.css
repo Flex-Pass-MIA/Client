@@ -1,7 +1,7 @@
 
 agm-map{
   align-items: center;
-  height: 100vh;
+  height: -webkit-fill-available;
   width: 100%;
  
 }

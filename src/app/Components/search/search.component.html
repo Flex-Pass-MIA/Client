@@ -16,15 +16,16 @@
   <div class="dvsn">
     
     <div class="info-contain">
+
       <!-- START OF GYM INFO -->
+
       <div class="gym-contain">
         <div class="single-gym" *ngFor="let gym of mySearch.gymResults">
           <img [src]="gym.pic"  height="150px" width="250px"/>
           <h4><b>{{ gym.name }}</b></h4> 
 
               <p>{{ gym.formatted_address }}</p> 
-                <p><b>Rating</b></p>
-                  <p>{{ gym.rating }}</p> 
+              <p> <span class="rating" attr.data-rating="{{gym.rating}}" data-star="★★★★★"></span>  {{gym.rating / 20}}</p> 
                   <p>{{gym.place_id}}</p>
             
             <div *ngFor="let popTimes of gym.busyTimes[0]">
@@ -40,13 +41,11 @@
             </div>
             <!-- Add Gym Button -->
             <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button>
-
-          </div>
-          <!-- Add Gym Button -->
-          <button mat-icon type="submit" (click)="addGym(gym.place_id, user._id)"><mat-icon>add_circle_outline</mat-icon> </button>
-        </div>
       </div>
+
       <!-- END OF GYM INFO -->
+
+    </div>
     </div>
     
     
@@ -78,6 +77,3 @@
     
   </app-main-nav> 
     
-    
-    
-      </app-main-nav> 
