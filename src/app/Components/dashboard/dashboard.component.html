@@ -1,46 +1,63 @@
-<h1>
-  dashboard works!
-</h1>
-
-<div *ngIf="user">
-  <p>Welcome {{user.firstname}} {{user.lastname}},</p>
-  <p> Current Membership: {{user.membership}} </p>
-  <a [routerLink]="['/search']"><button type="submit">Search</button></a>
-  <a [routerLink]="['/']"><button type="submit" (click)="logout()">Log Out</button></a>
+<app-main-nav>
+<div class="dash-nav">
+    <div class="dash-info" *ngIf="user">
+      <h1 class="white-font">Welcome {{user.firstname}},</h1>
+      <h2 class="white-font">Membership: {{user.membership}} </h2>
+    </div>
 </div>
+  
+  <!-- <div>
+  {{myGymService.myGym}}
+  </div> -->
+  
+  <div>
+    <mat-card>
+        <mat-card-content>
+          <mat-tab-group class="demo-tab-group">
+            <mat-tab label="My Info">
+              <div class="demo-tab-content">
+                <div>  
+                  <p>Name: {{user.firstname}} {{user.lastname}} </p>
+                  <p>Email: {{user.email}}</p>
+                  <p>Date of Birth: {{user.dob}}</p>
+                  <p>Address: {{user.address}}</p>
+                  <p>Phone: {{user.phone}}</p>
+                  <p>Username: {{user.username}}</p>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="My Flex">
+              <div class="my-flex">
+                  <div *ngFor="let gym of gymList">
+                      <!-- {{gym.place_id}} -->
+                      <img [src]="gym.pic"  height="200px"/>
+                      <h3><b>{{gym.name}}</b></h3>
+                        <p>{{ gym.formatted_address }}</p> 
+                        <p> <span class="rating" attr.data-rating="{{gym.rating}}" data-star="★★★★★"></span>  {{gym.rating / 20}}</p> 
+                        <div *ngFor="let popTimes of gym.busyTimes[0]">
+                          <div *ngIf="isDate(popTimes.day)">
+                            <!-- <h3>{{popTimes.day}}</h3> -->
+                             <div *ngFor="let time of popTimes.busyInfo[0]">
+                              <ul>
+                                <!-- <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li> -->
+                              </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <button (click)="deleteGym(gym.place_id, user._id)">Delete</button>
+                          <button (click)="replaceGym(gym.place_id, user._id)">Swap This Gym!</button>
+                    </div>
+              </div>  
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+  </div>
+  
+  
+  
+  
+  
+  
 
-
-<div>
-{{myGymService.myGym}}
-</div>
-
-
-
-
-
-
-
-<div *ngFor="let gym of gymList">
-  {{gym.place_id}}
-  <h1>{{gym.name}}</h1>
-  <img [src]="gym.pic"  height="200px"/>
-    <p><b>Location</b></p>
-    <p>{{ gym.formatted_address }}</p> 
-    <p><b>Rating</b></p>
-    <p>{{ gym.rating }}</p> 
-    <div *ngFor="let popTimes of gym.busyTimes[0]">
-      <div *ngIf="isDate(popTimes.day)">
-        <h3>{{popTimes.day}}</h3>
-         <div *ngFor="let time of popTimes.busyInfo[0]">
-          <ul>
-            <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li>
-          </ul>
-          <br>
-          </div>
-        </div>
-      </div>
-      <button (click)="deleteGym(gym.place_id, user._id)">Delete</button>
-      <button (click)="replaceGym(gym.place_id, user._id)">Swap This Gym!</button>
-
-
-</div>
+</app-main-nav>

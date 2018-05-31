@@ -13,7 +13,7 @@ import { GymService } from '../../service/gym.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css', './search.component.scss']
 })
 export class SearchComponent implements OnInit {
   resultSearch: any = {};
@@ -56,7 +56,8 @@ export class SearchComponent implements OnInit {
 
 
   addGym(gymID, user) {
-    console.log(gymID);
+    console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
+    console.log(`WHAT IS USER ID MANNNNNN`, user);
     this.myGymService.newGym(gymID, user)
     .subscribe(
       (gymAdded) => {
@@ -99,6 +100,8 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit() {
+    // console.log(`WHAT THE HELLL MANNN`, this.user)
+    // this.myAuthService.isLoggedIn();
     // console.log("what is gym return:  ", this.gymReturn);
     this.myAuthService.currentUser.subscribe((res) => {
       this.user = res;
@@ -106,8 +109,8 @@ export class SearchComponent implements OnInit {
         this.myRouter.navigate(['/login']);
       }
     });
+    this.gymSearch();
 
-    // this.myAuthService.isLoggedIn();
 
   }
 
