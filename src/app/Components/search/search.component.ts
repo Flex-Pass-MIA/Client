@@ -109,6 +109,7 @@ export class SearchComponent implements OnInit {
         this.myRouter.navigate(['/login']);
       }
     });
+    this.gymSearch();
 
     // this.myAuthService.isLoggedIn();
 
