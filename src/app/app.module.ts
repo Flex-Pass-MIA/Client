@@ -21,11 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MembershipComponent } from './Components/membership/membership.component';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { BusygraphComponent } from '../app/Components/busygraph/busygraph.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'index', component: HomeComponent },
   { path: 'main', component: MainNavComponent },
+  { path: 'busygraph', component: BusygraphComponent },
+
 ];
 
 
@@ -50,7 +53,8 @@ const routes: Routes = [
     DashboardComponent,
     HomeComponent,
     MainNavComponent,
-    MembershipComponent
+    MembershipComponent,
+    BusygraphComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ const routes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+
     MatListModule,
     BrowserAnimationsModule,
     MatInputModule,

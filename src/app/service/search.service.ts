@@ -19,12 +19,12 @@ export class SearchService {
     .map(res => {
       this.results = res;
 
-      console.log(`get the results bruhuuhuhuhuhu`, this.results._body);
+      // console.log(`get the results bruhuuhuhuhuhu`, this.results._body);
       // console.log(`get the results MAMAMAMAMAMAMAMA`, this.results);
       this.gymResults = JSON.parse(this.results._body);
       // console.log('res in search service:----->', JSON.parse(this.results._body));
       // this.gymResults.push(JSON.parse(this.results._body));
-      console.log(`This is GymResults========>>>>>>!!!!!!!`, this.gymResults);
+      // console.log(`This is GymResults========>>>>>>!!!!!!!`, this.gymResults);
       res.json();
 
     })
