@@ -1,9 +1,25 @@
+
+<h1>
+  dashboard works!
+</h1>
+
+<div *ngIf="user">
+  <p>Welcome {{user.firstname}} {{user.lastname}},</p>
+  <p> Current Membership: {{user.membership}} </p>
+  <a [routerLink]="['/search']"><button type="submit">Search</button></a>
+  <a><button type="submit" (click)="logout()">Log Out</button></a>
+</div>
+
+
+<div>
+
 <app-main-nav>
 <div class="dash-nav">
     <div class="dash-info" *ngIf="user">
       <h1 class="white-font">Welcome {{user.firstname}},</h1>
       <h2 class="white-font">Membership: {{user.membership}} </h2>
     </div>
+
 </div>
   
   <!-- <div>

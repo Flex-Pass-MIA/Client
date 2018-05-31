@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
 
   error: string;
   gymReturn: any = this.mySearch.gymResults;
+  // busyTimes: any = this.mySearch.gymResults
   // week: any = this.mySearch.gymResults[0].week[0].forEach(thing => thing.day);
   // week = this.mySearch.gymResults[0].week[0];
   thisIsWeek: any;
@@ -48,6 +49,8 @@ export class SearchComponent implements OnInit {
       return this.show = true;
 
     }
+
+
 
 
   }

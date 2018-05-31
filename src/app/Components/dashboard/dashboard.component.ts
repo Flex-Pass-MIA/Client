@@ -83,9 +83,12 @@ deleteGym(gymID, userId) {
   logout() {
     this.myService.logout()
       .subscribe(
-        (res) => console.log('logout', res),
-        (err) => this.error = err
-      );
+        (res) => {
+          this.user = null;
+          // console.log('logout', res);
+          console.log(`this is the user `, this.user);
+          this.myRouter.navigate(['/login']);
+        });
   }
 }
 
