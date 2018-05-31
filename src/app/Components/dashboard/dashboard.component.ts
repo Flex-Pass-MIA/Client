@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 // import { Observable } from 'rxjs/rx';
 import { Router } from '@angular/router';
 import { GymService } from '../../service/gym.service';
+import { SearchService } from '../../service/search.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -18,11 +20,20 @@ export class DashboardComponent implements OnInit {
   gymList: any;
   gymListError: any;
   show: boolean;
+  resultSearch: any = {};
+  searchTerm: any;
+  today: Date = new Date();
+  gymReturn: any = this.mySearch.gymResults;
+  thisIsWeek: any;
+  theDay: any;
+  gymSelected: any;
+
 
   constructor(
     private myService: SessionService,
     private myRouter: Router,
-    private myGymService: GymService
+    private myGymService: GymService,
+    private mySearch: SearchService
   ) {
     this.show = false;
    }
@@ -90,5 +101,33 @@ deleteGym(gymID, userId) {
           this.myRouter.navigate(['/login']);
         });
   }
+
+  addGym(gymID, user) {
+    console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
+    console.log(`WHAT IS USER ID MANNNNNN`, user);
+    this.myGymService.newGym(gymID, user)
+    .subscribe(
+      (gymAdded) => {
+      console.log(gymAdded);
+    },
+    (err) => { this.error = err;
+      console.log('Unsucessfully Added Gym');
+    });
+  }
+
+  gymSearch() {
+    console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
+    this.mySearch.searchResult(this.resultSearch)
+      .subscribe(
+
+        (res) => {
+          this.resultSearch.searchTerm = res;
+        },
+        (err) => this.error = err
+      );
+
+    }
+
+
 }
 
