@@ -125,10 +125,15 @@ export class SearchComponent implements OnInit {
     // this.myAuthService.currentUser.subscribe((res) => {
     //   this.user = res;
     //   if (this.user === undefined || this.user === null ) {
+
+    //     // this.myRouter.navigate(['/login']);
+    //   }
+    // });
     //     this.myRouter.navigate(['/login']);
     //   }
     // });
     this.isReady =  false;
+
     this.gymSearch();
 
 

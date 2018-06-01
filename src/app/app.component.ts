@@ -15,15 +15,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.myService.isLoggedIn()
-    .then( () => {
-    this.myService.currentUser.subscribe((res) => {
-      this.user = res;
-      if (this.user === undefined || this.user === null ) {
-        this.router.navigate(['/login']);
-      }
-    });
-    });
+    // this.myService.isLoggedIn()
+    // .then( () => {
+    // this.myService.currentUser.subscribe((res) => {
+    //   this.user = res;
+    //   if (this.user === undefined || this.user === null ) {
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
+    // });
     // this.myService.isLoggedIn()
     // .then( () => {
   //     this.user = this.myService.currentUser;
