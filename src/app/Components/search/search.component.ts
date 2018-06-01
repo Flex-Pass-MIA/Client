@@ -109,12 +109,12 @@ export class SearchComponent implements OnInit {
     // console.log(`WHAT THE HELLL MANNN`, this.user)
     // this.myAuthService.isLoggedIn();
     // console.log("what is gym return:  ", this.gymReturn);
-    this.myAuthService.currentUser.subscribe((res) => {
-      this.user = res;
-      if (this.user === undefined || this.user === null ) {
-        this.myRouter.navigate(['/login']);
-      }
-    });
+    // this.myAuthService.currentUser.subscribe((res) => {
+    //   this.user = res;
+    //   if (this.user === undefined || this.user === null ) {
+    //     // this.myRouter.navigate(['/login']);
+    //   }
+    // });
     this.gymSearch();
 
 

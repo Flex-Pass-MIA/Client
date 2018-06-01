@@ -8,10 +8,21 @@ import { SessionService } from '../../service/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  user: any;
+
   constructor(private myService: SessionService) { }
 
   ngOnInit() {
-
+    // console.log(`############$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%`, this.user);
+    // this.myService.isLoggedIn()
+    // .then( () => {
+    // this.myService.currentUser.subscribe((res) => {
+    //   this.user = res;
+    //   if (this.user === undefined || this.user === null ) {
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
+    // });
   }
 
 }

@@ -39,12 +39,14 @@
             </mat-tab>
             <mat-tab label="My Flex">
               <div class="my-flex">
-                  <div *ngFor="let gym of gymList">
+                  <div class="flex-gym" *ngFor="let gym of gymList">
                       <!-- {{gym.place_id}} -->
-                      <img [src]="gym.pic"  width="200px;"/>
+                      <img class="pic" *ngIf="gym.pic" [src]="gym.pic"  height="150px" width="250px"/>
+                      <img class="pic" *ngIf="!gym.pic" src="../../../assets/images/6-Reasons-You-Should-Never-Open-a-Gym.png"  height="150px" width="250px"/>
                       <h3><b>{{gym.name}}</b></h3>
                         <p class="address-width">{{ gym.formatted_address }}</p> 
-                        <p> <span class="rating" attr.data-rating="{{gym.rating}}" data-star="★★★★★"></span>  {{gym.rating / 20}}</p> 
+                        <p *ngIf="gym.rating"> <span class="rating" attr.data-rating="{{gym.rating}}" data-star="★★★★★"></span>  {{gym.rating / 20}}</p> 
+                        <p *ngIf="!gym.rating">No Reviews</p>
                         <div *ngFor="let popTimes of gym.busyTimes[0]">
                           <div *ngIf="isDate(popTimes.day)">
                             <!-- <h3>{{popTimes.day}}</h3> -->
@@ -55,24 +57,29 @@
                               </div>
                             </div>
                           </div>
-                          <button (click)="deleteGym(gym.place_id, user._id)">Delete</button>
+                          <button class="delete" mat-icon mat-button (click)="deleteGym(gym.place_id, user._id)"><mat-icon>delete</mat-icon></button>
                           <!-- <button (click)="replaceGym(gym.place_id, user._id)">Swap This Gym!</button> -->
                     </div>
               </div>  
             </mat-tab>
             <!-- SEARCH TAB -->
-            <mat-tab label="My Info">
+            <mat-tab label="Swap Gyms">
                 <div class="demo-tab-content">
                   <div class="container-gyms">
                     <div class="search-contain">
                         <div>
                             <form class="search">
-                              <mat-form-field>
-                        
-                                <mat-icon matSuffix>location_on</mat-icon>
-                                <input matInput mat-icon placeholder="Find Your Gym" type="search" [(ngModel)]="resultSearch.searchTerm" name="search" (keyup.enter)= "gymSearch()">
+                              
+                              <div>
+                                <mat-form-field>
+                                  <mat-icon matSuffix>location_on</mat-icon>
+                                  <input matInput mat-icon placeholder="Find Your Gym" type="search" [(ngModel)]="resultSearch.searchTerm" name="search" (keyup.enter)= "gymSearch()">
+                                </mat-form-field>
+                                </div>
+
+                              <div>
                                 <button class="search-btn" mat-button type="button" (click)="gymSearch()"><mat-icon matSuffix>search</mat-icon></button>
-                              </mat-form-field>
+                              </div>
                             </form>
                           </div> 
 
@@ -82,7 +89,8 @@
                         
                               <div class="gym-contain">
                                 <div class="single-gym" *ngFor="let gym of mySearch.gymResults">
-                                  <img [src]="gym.pic"  height="150px" width="250px"/>
+                                  <img class="pic" *ngIf="gym.pic" [src]="gym.pic"  height="150px" width="250px"/>
+                                  <img class="pic" *ngIf="!gym.pic" src="../../../assets/images/6-Reasons-You-Should-Never-Open-a-Gym.png"  height="150px" width="250px"/>
                                   <h4><b>{{ gym.name }}</b></h4> 
                         
                                       <p>{{ gym.formatted_address }}</p> 
@@ -103,7 +111,7 @@
                                     </div>
                                     <!-- Add Gym Button -->
 
-                                    <button  mat-button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button>
+                                    <button  mat-button mat-icon type="submit" (click)="addGym(gym.place_id, user, gym.name)"><mat-icon>add_circle_outline</mat-icon> </button>
 
 
                         
@@ -116,16 +124,19 @@
                       <app-googlemap [searchResults] = "mySearch.gymResults"></app-googlemap>
                     </div>
                     <!-- ########################## END OF MAP COLUMN ############################## -->
-                    
-                    <div>
-                      
-                      <h2>gyms added</h2>
-                    
-                        <div *ngFor="let side of sideGyms">
-                            <p>ahahahahah</p>
-                            <h2>{{side}}</h2>
-                          </div>
-                      
+                    <div class="add-gym">
+                     
+                      <div class="new-gyms">
+                        
+                        <h2>New Gyms</h2>
+                      <hr>
+                      <ol>
+                      <div *ngFor="let side of sideGyms">
+                              <li><b>{{side}}</b></li>
+                            </div>
+                          </ol>
+                        
+                      </div>
                     </div>
                   </div>
                   

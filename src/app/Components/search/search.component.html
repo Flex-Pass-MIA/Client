@@ -42,6 +42,7 @@
                     <br>
                     <p>{{time.percentage}}</p> -->
                     <h4 class="busy">Busy Times</h4>
+                    <div *ngIf="!popTimes"> <h2>No Busy Times Availble</h2></div>
                         <div class="graph-size"> 
                           <app-busygraph  [graphSearchResultsHour] = "popTimes.busyInfo" ></app-busygraph>
                       </div>
@@ -49,7 +50,7 @@
   
                       <!-- <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li> -->
                     
-                   
+                  
                 </div>
               </div>
             </div>

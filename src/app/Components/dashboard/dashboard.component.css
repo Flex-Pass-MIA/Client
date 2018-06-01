@@ -25,6 +25,14 @@
   border: 1px solid #e8e8e8;
 }
 
+.pic {
+  box-shadow: 1px 3px 3px rgba(100, 100, 100, 1)
+}
+
+.delete mat-icon{
+ color: red;
+}
+
 .demo-tab-content {
   padding: 10px;
 }
@@ -34,6 +42,11 @@
   flex-direction: row;
   padding: 15px;
 }
+
+.flex-gym {
+  padding: 10px;
+}
+
 
 .spacer {
   margin-top: 70px;
@@ -49,7 +62,7 @@
 
 .container-gyms {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   height: 55vh;
 }
 
@@ -59,14 +72,11 @@
 }
 
 .search {
-  /* margin-top: 70px;
     display: flex;
-    justify-items: end;
-    align-items: center;
-    height: 70px;
-    width: 100%;
+    justify-content: space-between;
+    width: 100%; 
     border-bottom: 1px solid #888888;
-    padding-left: 10px;
+    /* padding-left: 10px;
     position: fixed;
     z-index: 1;
     background-color: white; */
@@ -81,8 +91,9 @@ input {
   justify-content: center;
   align-items: center;
   border: 1px solid #888888;
-  margin-left: 20px;
-  width: 100px;
+  margin: 0 20px 0 0;
+  padding: 0;
+  
   
 }
 
@@ -92,7 +103,7 @@ input {
 
 .dvsn {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80vh;
   position: fixed;
 }
@@ -115,4 +126,32 @@ input {
   display: flex;
   flex-direction: column;
   height: 400px;
+}
+
+.new-gyms {
+  padding: 10px;
+  width: 100%;
+}
+
+.new-gyms h2 {
+  text-align: center;
+  color: #888888;
+  font-weight: 400;
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.new-gyms h4 {
+  text-align: center;
+  color: #888888;
+  font-weight: 400;
+  font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+  margin: 10px auto;
+  width: 100%;
+  
+}
+
+.add-gym {
+  width: 30vw;
 }
