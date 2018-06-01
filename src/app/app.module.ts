@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
@@ -21,9 +21,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { MembershipComponent } from './Components/membership/membership.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
@@ -54,7 +53,6 @@ const routes: Routes = [
     DashboardComponent,
     HomeComponent,
     MainNavComponent,
-    MembershipComponent,
     BusygraphComponent
   ],
   imports: [
@@ -78,11 +76,13 @@ const routes: Routes = [
     ChartsModule,
     MatTabsModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [
     SessionService,
-    SearchService],
+    SearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

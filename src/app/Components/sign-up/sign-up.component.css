@@ -1,7 +1,8 @@
 .signup {
-  height: 500px;
+  height: 100%;
   width: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -26,7 +27,4 @@ input {
   width: 200px;
 }
 
-.signDiv {
-  display: flex;
-  justify-content: space-between
-}
+

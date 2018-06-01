@@ -3,6 +3,9 @@ import { SessionService } from '../../service/auth.service';
 // import { Observable } from 'rxjsjj/Observable';
 import { Observable } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators, } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-sign-up',
@@ -10,6 +13,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
+
 
   formInfo = {
     firstname: '',
@@ -26,7 +36,7 @@ export class SignUpComponent implements OnInit {
   user: any;
   error: string;
 
-  constructor( private myService: SessionService, private router: Router ) { }
+  constructor( private myService: SessionService, private router: Router, private _formBuilder: FormBuilder) { }
 
   signup() {
     console.log(`Signup Now`);
@@ -43,6 +53,16 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+
     // this.myService.isLoggedIn();
   }
 
