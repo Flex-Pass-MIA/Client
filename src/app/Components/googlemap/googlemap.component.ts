@@ -18,7 +18,7 @@ import { SearchComponent } from '../search/search.component';
 export class GooglemapComponent implements OnInit {
   // @ViewChild(SearchComponent) searchComponent: SearchComponent;
   @Input() searchResults: any;
-  zoom = 11;
+  zoom = 12;
 
   latitude = 25.761681;
   longitude = -80.191788;

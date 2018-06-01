@@ -24,6 +24,14 @@
     background-color: white;
 }
 
+.graph-size {
+  width: 300px;
+}
+
+.graph-right {
+  float: right;
+}
+
 input {
   width:300px;
 }
@@ -41,29 +49,56 @@ input {
 .dvsn {
   display: flex;
   justify-content: space-between;
-  height: 80vh;
+  height: 100%;
   position: fixed;
 }
 
 .info-contain {
   width: 50vw;
   overflow-y: scroll;
-  overflow-x: hidden; 
-  height: 80vh;
+  overflow-x: hidden;
+  height: 100%;
 
 }
 
 .single-gym {
+  display: flex;
+  justify-content: space-evenly;
   padding: 10px;
   width: 50vw;
-  line-height: 1px;
   border-bottom: 1px solid #888888;
+  height: 100%;
 }
 
 .gym-contain {
   display: flex;
   flex-direction: column;
-  height: 400px;
+}
+
+h4{
+  line-height: 15px;
+}
+
+p{
+  line-height: 20px;
+}
+
+.left-side-card {
+height: 100%;
+width: 25vw;
+}
+
+.right-side-card {
+  height: 100%;
+  width: 25vw;
+  display: flex;
+  
+}
+
+.busy {
+  text-align: center;
+  line-height: 1px;
+  
 }
 
 /* ************************** STAR RATING *********************************/
