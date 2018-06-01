@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   error: any;
   myFlex: any;
   gymList: any;
+  sideGyms: any = [];
   gymListError: any;
   show: boolean;
   resultSearch: any = {};
@@ -28,6 +29,8 @@ export class DashboardComponent implements OnInit {
   theDay: any;
   gymSelected: any;
 
+  blah: any;
+
 
   constructor(
     private myService: SessionService,
@@ -35,6 +38,7 @@ export class DashboardComponent implements OnInit {
     private myGymService: GymService,
     private mySearch: SearchService
   ) {
+    this.sideGyms = [];
     this.show = false;
    }
 
@@ -51,6 +55,9 @@ export class DashboardComponent implements OnInit {
       });
       this.getUsersGyms();
     });
+
+    this.sideGyms = this.mySearch.gymResults;
+
     }
 // ***********************************************************
 isDate(arrDay) {
@@ -91,24 +98,33 @@ deleteGym(gymID, userId) {
   });
 }
 // ***********************************************************
-  logout() {
-    this.myService.logout()
-      .subscribe(
-        (res) => {
-          this.user = null;
-          // console.log('logout', res);
-          console.log(`this is the user `, this.user);
-          this.myRouter.navigate(['/login']);
-        });
-  }
+  // logout() {
+  //   this.myService.logout()
+  //     .subscribe(
+  //       (res) => {
+  //         this.user = null;
+  //         // console.log('logout', res);
+  //         console.log(`this is the user `, this.user);
+  //         this.myRouter.navigate(['/login']);
+  //       });
+  // }
 
-  addGym(gymID, user) {
-    console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
-    console.log(`WHAT IS USER ID MANNNNNN`, user);
+  addGym(gymID, user, nameOfGym) {
+    // console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
+    // console.log(`WHAT IS USER ID MANNNNNN`, user);
     this.myGymService.newGym(gymID, user)
     .subscribe(
       (gymAdded) => {
-      console.log(gymAdded);
+        console.log('this isnt funny nick', gymAdded);
+        // this.sideGyms = gymAdded;
+        this.sideGyms.push(nameOfGym);
+
+
+        console.log(`this is the sidegyms added`, this.sideGyms);
+
+
+        this.getUsersGyms();
+
     },
     (err) => { this.error = err;
       console.log('Unsucessfully Added Gym');

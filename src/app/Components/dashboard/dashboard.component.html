@@ -19,9 +19,7 @@
 
 </div>
   
-  <!-- <div>
-  {{myGymService.myGym}}
-  </div> -->
+
   
   <div>
     <mat-card>
@@ -77,6 +75,7 @@
                               </mat-form-field>
                             </form>
                           </div> 
+
                           <div class="info-contain">
     
                               <!-- START OF GYM INFO -->
@@ -103,7 +102,10 @@
                                       </div>
                                     </div>
                                     <!-- Add Gym Button -->
+
                                     <button  mat-button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button>
+
+
                         
                                   </div>
                                   </div>
@@ -117,7 +119,12 @@
                     
                     <div>
                       
-                      
+                      <h2>gyms added</h2>
+                    
+                        <div *ngFor="let side of sideGyms">
+                            <p>ahahahahah</p>
+                            <h2>{{side}}</h2>
+                          </div>
                       
                     </div>
                   </div>
