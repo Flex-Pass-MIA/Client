@@ -43,7 +43,7 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.myService.isLoggedIn();
+    // this.myService.isLoggedIn();
   }
 
 }
