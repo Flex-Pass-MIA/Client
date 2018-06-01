@@ -28,10 +28,9 @@ export class GymService {
     console.log(`THIS PART WORKS`, gymID);
     return this.http.post(`http://localhost:3000/select-gyms`, gymId)
     .map(res => {
-        // console.log('res is WHATTTT IS ITT!!!!!!: ', this.myGym);
+        console.log('res is WHATTTT IS ITT!!!!!!: ', res);
         res.json();
-      })
-      .catch(this.handleError);
+      });
   }
 
   removeGym(gymID, userId) {
