@@ -19,9 +19,7 @@
 
 </div>
   
-  <!-- <div>
-  {{myGymService.myGym}}
-  </div> -->
+
   
   <div>
     <mat-card>
@@ -77,6 +75,7 @@
                               <button class="search-btn" mat-button type="button" (click)="gymSearch()"><mat-icon matSuffix>search</mat-icon></button>
                             </form>
                           </div> 
+
                           <div class="info-contain">
     
                               <!-- START OF GYM INFO -->
@@ -103,7 +102,7 @@
                                       </div>
                                     </div>
                                     <!-- Add Gym Button -->
-                                    <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button>
+                                    <button mat-icon type="submit" (click)="addGym(gym.place_id, user, gym.name)"><mat-icon>add_circle_outline</mat-icon> </button>
                         
                                   </div>
                                   </div>
@@ -117,7 +116,12 @@
                     
                     <div>
                       
-                      
+                      <h2>gyms added</h2>
+                    
+                        <div *ngFor="let side of sideGyms">
+                            <p>ahahahahah</p>
+                            <h2>{{side}}</h2>
+                          </div>
                       
                     </div>
                   </div>

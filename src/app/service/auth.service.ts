@@ -49,10 +49,10 @@ export class SessionService {
   logout() {
   // this.currentUser = null;
   sessionStorage.clear();
-    return this.http.post(`http://localhost:3000/api/logout`, {})
+    return this.http.post(`http://localhost:3000/api/logout`, {}, {withCredentials: true})
       .map(res => {
         this.currentUser.next(null);
-        this.temporaryUser = null;
+        // this.temporaryUser = null;
         console.log(`this is the current user in auth`, this.currentUser);
         res.json();
       })

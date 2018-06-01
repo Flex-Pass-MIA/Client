@@ -26,9 +26,9 @@ export class MainNavComponent {
     this.myService.logout()
       .subscribe(
         (res) => {
-          this.user = null;
+          // this.user = null;
           // console.log('logout', res);
-          console.log(`this is the user `, this.user);
+          // console.log(`this is the user `, this.user);
           this.myRouter.navigate(['/login']);
         });
   }
