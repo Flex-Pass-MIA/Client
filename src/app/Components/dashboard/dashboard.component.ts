@@ -28,7 +28,8 @@ export class DashboardComponent implements OnInit {
   thisIsWeek: any;
   theDay: any;
   gymSelected: any;
-
+  isReady: boolean;
+  gymReady: boolean;
   blah: any;
 
 
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.sideGyms = [];
     this.show = false;
+    // this.gymReady = false;
    }
 
 // ***********************************************************
@@ -55,8 +57,10 @@ export class DashboardComponent implements OnInit {
       });
       this.getUsersGyms();
     });
+    this.isReady = false;
+    this.gymReady = true;
 
-    this.sideGyms = this.mySearch.gymResults;
+    // this.sideGyms = this.mySearch.gymResults;
 
     }
 // ***********************************************************
@@ -68,11 +72,13 @@ isDate(arrDay) {
 }
 // ***********************************************************
 getUsersGyms() {
+  this.isReady = false;
   // console.log(`who is the user?:::::::>`);
   // console.log(`does this happen---->`, this.myGymService.getAllGyms());
   this.myGymService.getAllGyms(this.user)
   .subscribe(usersGyms => {
     console.log('are these the usersGyms????: ', usersGyms);
+    this.isReady = true;
     this.gymList = usersGyms;
   },
     () => { this.gymListError = 'Sorry, no gyms listed.'; }
@@ -112,6 +118,7 @@ deleteGym(gymID, userId) {
   addGym(gymID, user, nameOfGym) {
     // console.log(`WHAT IS GYM ID MANNNNNN`, gymID);
     // console.log(`WHAT IS USER ID MANNNNNN`, user);
+
     this.myGymService.newGym(gymID, user)
     .subscribe(
       (gymAdded) => {
@@ -132,11 +139,14 @@ deleteGym(gymID, userId) {
   }
 
   gymSearch() {
+    this.gymReady = false;
     console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
     this.mySearch.searchResult(this.resultSearch)
       .subscribe(
 
         (res) => {
+          this.gymReady = true;
+
           this.resultSearch.searchTerm = res;
         },
         (err) => this.error = err

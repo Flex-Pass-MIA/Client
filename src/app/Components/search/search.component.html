@@ -18,7 +18,12 @@
     <div class="info-contain">
 
       <!-- START OF GYM INFO -->
-
+      
+      
+      <div *ngIf="!isReady">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <div *ngIf="isReady">
       <div class="gym-contain">
         <div class="single-gym" *ngFor="let gym of mySearch.gymResults">
           <div class="left-side-card">
@@ -57,8 +62,9 @@
             <!-- Add Gym Button -->
 
             <!-- <button mat-icon type="submit" (click)="addGym(gym.place_id, user)"><mat-icon>add_circle_outline</mat-icon> </button> -->
-      </div>
-
+     
+    </div>
+  </div>
       <!-- END OF GYM INFO -->
 
     </div>

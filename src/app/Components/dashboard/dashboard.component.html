@@ -37,9 +37,17 @@
                 </div>
               </div>
             </mat-tab>
-            <mat-tab label="My Flex">
+            <mat-tab label="My Flex">                 
+                <div *ngIf="!isReady">
+                    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+                  </div>
+                  <div *ngIf="isReady">
               <div class="my-flex">
+
                   <div class="flex-gym" *ngFor="let gym of gymList">
+
+
+
                       <!-- {{gym.place_id}} -->
                       <img class="pic" *ngIf="gym.pic" [src]="gym.pic"  height="150px" width="250px"/>
                       <img class="pic" *ngIf="!gym.pic" src="../../../assets/images/6-Reasons-You-Should-Never-Open-a-Gym.png"  height="150px" width="250px"/>
@@ -50,15 +58,17 @@
                         <div *ngFor="let popTimes of gym.busyTimes[0]">
                           <div *ngIf="isDate(popTimes.day)">
                             <!-- <h3>{{popTimes.day}}</h3> -->
-                             <div *ngFor="let time of popTimes.busyInfo[0]">
-                              <ul>
-                                <!-- <li>during hour:{{time.hour}} is % :{{time.percentage}} , busy</li> -->
-                              </ul>
+                             <!-- <div *ngFor="let time of popTimes.busyInfo[0]"> -->
+                                <h4 class="busy">Busy Times</h4>
+                                <div class="graph-size"> 
+                                  <app-busygraph  [graphSearchResultsHour] = "popTimes.busyInfo" ></app-busygraph>
                               </div>
+                              <!-- </div> -->
                             </div>
                           </div>
                           <button class="delete" mat-icon mat-button (click)="deleteGym(gym.place_id, user._id)"><mat-icon>delete</mat-icon></button>
                           <!-- <button (click)="replaceGym(gym.place_id, user._id)">Swap This Gym!</button> -->
+                    </div>
                     </div>
               </div>  
             </mat-tab>
@@ -86,7 +96,10 @@
                           <div class="info-contain">
     
                               <!-- START OF GYM INFO -->
-                        
+                              <div *ngIf="!gymReady">
+                                  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+                                </div>
+                                <div *ngIf="gymReady">
                               <div class="gym-contain">
                                 <div class="single-gym" *ngFor="let gym of mySearch.gymResults">
                                   <img class="pic" *ngIf="gym.pic" [src]="gym.pic"  height="150px" width="250px"/>
@@ -114,7 +127,7 @@
                                     <button  mat-button mat-icon type="submit" (click)="addGym(gym.place_id, user, gym.name)"><mat-icon>add_circle_outline</mat-icon> </button>
 
 
-                        
+                        </div>
                                   </div>
                                   </div>
                                   </div>

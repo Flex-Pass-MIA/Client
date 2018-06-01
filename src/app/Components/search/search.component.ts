@@ -33,6 +33,8 @@ export class SearchComponent implements OnInit {
   theDay: any;
   gymSelected: any;
   user: any;
+  isReady: boolean;
+  showRes: boolean;
 
   constructor(public mySearch: SearchService,
     private myGymService: GymService,
@@ -40,6 +42,8 @@ export class SearchComponent implements OnInit {
     private myRouter: Router
   ) {
     this.show = false;
+    this.isReady = false;
+    this.showRes = true;
   }
 
 
@@ -58,6 +62,12 @@ export class SearchComponent implements OnInit {
 
   }
 
+  // checkResArr() {
+  //   while (this.mySearch.gymResults === []) {
+  //     this.showRes = false;
+  //   }
+  // }
+
 
 
 
@@ -75,12 +85,15 @@ export class SearchComponent implements OnInit {
   }
 
   gymSearch() {
+    this.isReady = false;
     // console.log(`this is Search Term====>>>>>>`, this.resultSearch.searchTerm);
     this.mySearch.searchResult(this.resultSearch)
       .subscribe(
 
         (res) => {
           this.resultSearch.searchTerm = res;
+          // this.showRes = true;
+          this.isReady = true;
         },
         (err) => this.error = err
       );
@@ -112,9 +125,15 @@ export class SearchComponent implements OnInit {
     // this.myAuthService.currentUser.subscribe((res) => {
     //   this.user = res;
     //   if (this.user === undefined || this.user === null ) {
+
     //     // this.myRouter.navigate(['/login']);
     //   }
     // });
+    //     this.myRouter.navigate(['/login']);
+    //   }
+    // });
+    this.isReady =  false;
+
     this.gymSearch();
 
 
