@@ -28,6 +28,7 @@
       </button>
       <a [routerLink]="['/']"><img src="../../../assets/images/Flex-logo-solo_1@216x-8.png" alt="Flex-Pass" width="150px"></a>
       <span class="spacer"></span>
+      <a *ngIf="user"><b> Hi {{user.firstname}}</b></a>
       <a [routerLink]="['/search']">Explore</a>
 
       <a *ngIf="user === null" [routerLink]="['/signup']">Signup</a>

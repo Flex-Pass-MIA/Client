@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -11,11 +12,13 @@ import { Observable } from 'rxjs/Observable';
 export class SearchService {
   results: any;
   gymResults: Array<any> = [];
+  baseUrl: any = environment.apiUrl;
+
   constructor(private http: Http) { }
 
   searchResult(x) {
     console.log('x is : ', x);
-    return this.http.post(`http://localhost:3000/search/gymsearch`, x)
+    return this.http.post(`${this.baseUrl}/search/gymsearch`, x)
     .map(res => {
       this.results = res;
 
