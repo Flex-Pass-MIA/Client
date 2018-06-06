@@ -36,13 +36,14 @@ export class BusygraphComponent implements OnInit {
   // color: any =[];
 
 
+
   // public dashChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   // public dashChartData: number[] = [350, 450, 100];
   // public dashChartType: any = 'Busy Times';
 
   public searchChartLabels: string[] = this.hour;
   public searchChartData: any[] = [{data: this.perc,
-      label: this.hour}];
+      label: 'Traffic %'}];
   public searchChartType: any = 'bar';
     // tslint:disable-next-line:max-line-length
     public searchChartColor: any[] =  [];
@@ -51,9 +52,11 @@ export class BusygraphComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: { xAxes: [ { gridLines: {display: false}}],
-              yAxes: [ { gridLines: {display: false}}],
+
+    yAxes: [ { gridLines: {display: false}}],
+}
   }
-  };
+;
 
   // public searchChartLabels: string[] = ['ti'];
   // public searchChartData: number[] = [10, 9, 8, 7, 6];

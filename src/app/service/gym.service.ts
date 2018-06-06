@@ -6,6 +6,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { SessionService } from '../service/auth.service';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class GymService {
     private myService: SessionService) { }
   myGym: any;
   tempGym: any;
+  baseUrl: any = environment.apiUrl;
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -26,7 +28,7 @@ export class GymService {
     console.log(`WHAT THE HELL MAN`, user._id);
     const gymId = { gymId: gymID, userId: user._id };
     console.log(`THIS PART WORKS`, gymID);
-    return this.http.post(`http://localhost:3000/select-gyms`, gymId)
+    return this.http.post(`${this.baseUrl}/select-gyms`, gymId)
     .map(res => {
         console.log('res is WHATTTT IS ITT!!!!!!: ', res);
         res.json();
@@ -38,7 +40,7 @@ export class GymService {
     // console.log(`THIS PART WORKS & this too`, gymID);
     // console.log(`DID THIS EVEN HAPPEN`, user._id);
     const data = { gymId: gymID, userId: userId};
-    return this.http.post(`http://localhost:3000/delete-gym`, data)
+    return this.http.post(`${this.baseUrl}/delete-gym`, data)
     .map(res => {
         console.log('REMOVE GYM: ', res);
         res.json();
@@ -63,7 +65,7 @@ export class GymService {
 
   getAllGyms(user) {
     // console.log(`does this show the user!!!?!?!?!?!?!?!?`, user);
-    return this.http.post(`http://localhost:3000/flex`, user)
+    return this.http.post(`${this.baseUrl}/flex`, user)
         .map(res =>
           res.json()
         );

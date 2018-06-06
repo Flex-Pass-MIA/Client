@@ -28,17 +28,17 @@
             <mat-tab label="My Info">
               <div class="demo-tab-content">
                 <div>  
-                  <p>Name: {{user.firstname}} {{user.lastname}} </p>
-                  <p>Email: {{user.email}}</p>
-                  <p>Date of Birth: {{user.dob}}</p>
-                  <p>Address: {{user.address}}</p>
-                  <p>Phone: {{user.phone}}</p>
-                  <p>Username: {{user.username}}</p>
+                  <h3>Name: {{user.firstname}} {{user.lastname}} </h3>
+                  <h3>Email: {{user.email}}</h3>
+                  <h3>Date of Birth: {{user.dob}}</h3>
+                  <h3>Address: {{user.address}}</h3>
+                  <h3>Phone: {{user.phone}}</h3>
+                  <h3>Username: {{user.username}}</h3>
                 </div>
               </div>
             </mat-tab>
             <mat-tab label="My Flex">                 
-                <div *ngIf="!isReady">
+                <div class="spinner" *ngIf="!isReady">
                     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
                   </div>
                   <div *ngIf="isReady">
@@ -96,7 +96,7 @@
                           <div class="info-contain">
     
                               <!-- START OF GYM INFO -->
-                              <div *ngIf="!gymReady">
+                              <div class="spinner" *ngIf="!gymReady">
                                   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
                                 </div>
                                 <div *ngIf="gymReady">
@@ -107,8 +107,8 @@
                                   <h4><b>{{ gym.name }}</b></h4> 
                         
                                       <p>{{ gym.formatted_address }}</p> 
-                                        <p><b>Rating</b></p>
-                                          <p>{{ gym.rating }}</p> 
+                                      <p *ngIf="gym.rating"> <span class="rating" attr.data-rating="{{gym.rating}}" data-star="★★★★★"></span>  {{gym.rating / 20}}</p> 
+                                      <p *ngIf="!gym.rating">No Reviews</p>
                                           <!-- <p>{{gym.place_id}}</p> -->
                                     
                                     <div *ngFor="let popTimes of gym.busyTimes[0]">

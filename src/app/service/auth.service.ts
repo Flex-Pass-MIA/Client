@@ -6,7 +6,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SessionService {
   temporaryUser: any;
   currentUser: BehaviorSubject<string> = new BehaviorSubject(null);
-
+  baseUrl: any = environment.apiUrl;
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -22,7 +22,7 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(`http://localhost:3000/api/signup`, user, { withCredentials: true})
+    return this.http.post(`${this.baseUrl}/api/signup`, user, { withCredentials: true})
       .map(res => {
         console.log('res is: ', res);
         res.json();
@@ -31,7 +31,7 @@ export class SessionService {
   }
 
   login(user) {
-    return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true})
+    return this.http.post(`${this.baseUrl}/api/login`, user, { withCredentials: true})
       .map(res => {
 
         this.temporaryUser = res;
@@ -49,7 +49,7 @@ export class SessionService {
   logout() {
   // this.currentUser = null;
   sessionStorage.clear();
-    return this.http.post(`http://localhost:3000/api/logout`, {}, {withCredentials: true})
+    return this.http.post(`${this.baseUrl}/api/logout`, {}, {withCredentials: true})
       .map(res => {
         this.currentUser.next(null);
         // this.temporaryUser = null;
@@ -60,7 +60,7 @@ export class SessionService {
   }
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
+    return this.http.get(`${this.baseUrl}/api/loggedin`, { withCredentials: true })
     .toPromise()
       .then(res => {
         this.temporaryUser = res;

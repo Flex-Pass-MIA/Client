@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     private myService: SessionService,
     private myRouter: Router,
     private myGymService: GymService,
-    private mySearch: SearchService
+    public mySearch: SearchService
   ) {
     this.sideGyms = [];
     this.show = false;
