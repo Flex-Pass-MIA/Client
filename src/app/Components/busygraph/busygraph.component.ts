@@ -49,7 +49,10 @@ export class BusygraphComponent implements OnInit {
   public searchChartLegend = false;
   public searchChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: { xAxes: [ { gridLines: {display: false}}],
+              yAxes: [ { gridLines: {display: false}}],
+  }
   };
 
   // public searchChartLabels: string[] = ['ti'];
