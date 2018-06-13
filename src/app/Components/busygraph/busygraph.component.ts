@@ -52,10 +52,12 @@ export class BusygraphComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true,
     scales: { xAxes: [ { gridLines: {display: false}}],
+
     yAxes: [ { gridLines: {display: false}}],
 }
   }
 ;
+
   // public searchChartLabels: string[] = ['ti'];
   // public searchChartData: number[] = [10, 9, 8, 7, 6];
   // public searchChartType: any = 'doughnut';

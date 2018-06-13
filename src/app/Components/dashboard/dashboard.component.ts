@@ -50,10 +50,10 @@ export class DashboardComponent implements OnInit {
     .then(() => {
       this.myService.currentUser.subscribe((res) => {
         this.user = res;
-        console.log(`DASHBOARD USER`, this.user);
-        if (this.user === undefined || this.user === null ) {
-          this.myRouter.navigate(['/login']);
-        }
+        // console.log(`DASHBOARD USER`, this.user);
+        // if (this.user === undefined || this.user === null ) {
+        //   this.myRouter.navigate(['/login']);
+        // }
       });
       this.getUsersGyms();
     });
