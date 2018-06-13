@@ -34,19 +34,18 @@ export class MainNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(`############$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%`, this.user);
     this.myService.isLoggedIn()
     .then( () => {
     this.myService.currentUser.subscribe((res) => {
       this.user = res;
-      console.log("blahhhhhhh")
+      console.log('blahhhhhhh');
     //   if (this.user === undefined || this.user === null ) {
     //     this.myRouter.navigate(['/login']);
     //   }
     });
     })
     .catch(err => {
-      console.log('err in main nav comp: ', err)
+      console.log('err in main nav comp: ', err);
     });
   }
 
